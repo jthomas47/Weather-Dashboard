@@ -9,15 +9,18 @@ function convertDate(dt) {
 
 function showWeather(resp) {
     console.log(resp);
+    var icon = resp.weather[0].icon
     var city = resp.name
     var temp = resp.main.temp; 
     var wind = resp.wind.speed; 
     var humidity = resp.main.humidity; 
     var today = convertDate(resp.dt); 
-    var weatherHtml = `   <h3>${city} (${today})</h3>
+    var weatherHtml = `<h3>${city} (${today}) <img src="http://openweathermap.org/img/wn/${icon}.png"/></h3>
+  
     <p>Temp: ${temp}&deg;F</p>
     <p>Wind: ${wind} MPH</p>
     <p>Humidity: ${humidity} %</p>`;
+    dailyWeather.innerHTML = weatherHtml; 
     console.log(weatherHtml); 
 
 }
