@@ -1,6 +1,9 @@
 var searchBtn = document.querySelector('#searchBtn');
 var dailyWeather = document.querySelector('#dailyWeather'); 
-var forecast = document.querySelector('#forecast'); 
+var forecast = document.querySelector('#forecast');
+var forecastHeader = document.querySelector('#forecastHeader');
+
+
 var APIKey = '7179e619355c98dfb6b8db33795ab22d';
 
 function convertDate(dt) {
@@ -9,9 +12,9 @@ function convertDate(dt) {
     return date.toLocaleDateString("en-US"); 
 }
 
+
 function getForecast(lat, lon) {
-console.log(lat); 
-console.log(lon);
+forecastHeader.innerHTML = `<h5>5-Day Forecast:</h5>`
 var units = 'imperial';
 var lang = 'en'; 
 var queryUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=${units}&lang=${lang}`;
@@ -35,7 +38,7 @@ function showForecast(resp) {
         if (idx >= 8 && idx % 8 == 0 || idx == 39) {
             console.log(convertDate(day.dt));
             
-           return `<div class="col" style="width:7rem">
+           return `<div class="col">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">${convertDate(day.dt)} </h5>
