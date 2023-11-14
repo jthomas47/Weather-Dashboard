@@ -2,12 +2,15 @@ var searchBtn = document.querySelector('#searchBtn');
 var dailyWeather = document.querySelector('#dailyWeather'); 
 var forecast = document.querySelector('#forecast');
 var forecastHeader = document.querySelector('#forecastHeader');
+var inputCity = document.querySelector('#city'); 
+var searchHistory = document.getElementById('#history'); 
+ 
+
 
 
 var APIKey = '7179e619355c98dfb6b8db33795ab22d';
 
 function convertDate(dt) {
-    console.log(dt); 
     var date = new Date(dt * 1000); 
     return date.toLocaleDateString("en-US"); 
 }
@@ -29,15 +32,11 @@ fetch(queryUrl)
             showForecast(data); 
         })
         .catch(console.err);
-
 }
 
 function showForecast(resp) {
-    console.log(resp); 
     forecast.innerHTML = resp.list.map((day,idx) => {
         if (idx >= 8 && idx % 8 == 0 || idx == 39) {
-            console.log(convertDate(day.dt));
-            
            return `<div class="col">
             <div class="card">
               <div class="card-body">
@@ -51,14 +50,10 @@ function showForecast(resp) {
           </div>`
            
         }
-    }).join(' ')
-
-    console.log(forecast);
-    
+    }).join(' ')    
 }
 
 function showWeather(resp) {
-    console.log(resp);
     var icon = resp.weather[0].icon
     var city = resp.name
     var temp = resp.main.temp; 
@@ -74,12 +69,50 @@ function showWeather(resp) {
     <p>Wind: ${wind} MPH</p>
     <p>Humidity: ${humidity} %</p>`;
     dailyWeather.innerHTML = weatherHtml; 
-    console.log(weatherHtml); 
-
 }
 
-function getWeather() {
-    var city = 'Wichita';
+
+
+
+function readCity() {
+    var cities = localStorage.getItem('cities'); 
+    if (cities) {
+        cities = JSON.parse(cities); 
+    } else {
+        cities = []; 
+    }
+    return cities;
+}
+
+
+
+function saveCity(cities) {
+    localStorage.setItem('cities', JSON.stringify(cities)); 
+}
+
+function showCities() {
+    var cities = readCity();
+    for (var i = 0; i < cities.length; i += 1) {
+        var city = cities[i];
+        var btn = document.createElement('button'); 
+        btn.textContent= city; 
+        searchHistory.innerHTML = this.btn; 
+         
+    }
+    
+    
+    
+}
+
+
+
+function getWeather(event) {
+    event.preventDefault(); 
+    var city = inputCity.value; 
+    var cities = readCity(); 
+    cities.push(city);
+    saveCity(cities); 
+    showCities();
     var units = 'imperial';
     var lang = 'en'; 
     var queryUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=" + units + "&lang=" + lang;
@@ -96,5 +129,6 @@ function getWeather() {
         .catch(console.err);
 
 }
+
 
 searchBtn.addEventListener('click', getWeather); 

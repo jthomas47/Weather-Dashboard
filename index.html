@@ -10,10 +10,10 @@
 </head>
 
 <body>
+    <header><h1>Weather Dashboard</h1></header>
     <div class="container text-center">
         <div class="row">
             <div class="col-3" style="border:1px solid red;">
-                <!-- search form -->
                 <div class="form-group">
                     <h2>Search for a City:</h2>
                     <input id="city" class="form-control item" name="city" type="text" placeholder="City">
@@ -22,20 +22,16 @@
                     <button id="searchBtn" class="btn btn-primary btn-block" type="submit">Search</button>
                 </div>
             </div>
-            <!-- weather for the day -->
             <div id="dailyWeather" class="col" style="border:1px solid red;">
             </div>
         </div>
         <div class="row">
-            <!-- search history -->
-            <div class="col-3" style="border:1px solid red;">
+            <div id="history" class="col-3" style="border:1px solid red;">
                 This is where the search history will go
             </div>
-
             <div id="forecastHeader" class="col-1" style="margin-right:3rem;">
             </div>
             <div id="forecast" class="col" style="display:flex; flex-wrap: wrap;">
-
             </div>
         </div>
     </div>
