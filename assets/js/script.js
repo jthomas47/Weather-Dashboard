@@ -32,10 +32,10 @@ fetch(queryUrl)
 function showForecast(resp) {
     console.log(resp); 
     forecast.innerHTML = resp.list.map((day,idx) => {
-        if (idx >= 8 && idx % 8 == 0) {
+        if (idx >= 8 && idx % 8 == 0 || idx == 39) {
             console.log(convertDate(day.dt));
             
-           return `<div class="col">
+           return `<div class="col" style="width:7rem">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">${convertDate(day.dt)} </h5>
