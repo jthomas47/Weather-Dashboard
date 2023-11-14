@@ -1,0 +1,76 @@
+header {
+    text-align: center;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    color:white;
+    background-color: rgb(47, 42, 117);
+}
+
+
+h1 {
+    font-size: 28px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+.space {
+    font-size: 20x;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: .2rem;
+}
+
+
+.marg {
+    margin-bottom: 1.5rem;
+}
+
+
+.forecastHeader {
+    font-size: 18px;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+
+#forecast {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* TODO: MEDIA HERE */
+#searchBtn {
+    padding-left: 6.2rem;
+    padding-right: 6.2rem;
+}
+
+
+.card {
+    height: 16rem;
+    margin-bottom: .5rem; 
+    margin-left: .7rem;
+    
+    color: white;
+    background-color: rgb(42, 40, 51);
+}
+
+
+#dailyWeather {    
+    text-align: left;
+}
+
+
+.col:has(.bord)  {
+    border:1px solid black;
+    border-radius: .3rem;
+}
+
+
+#history {
+    margin-top: .8rem;
+}

@@ -17,7 +17,7 @@ function convertDate(dt) {
 
 
 function getForecast(lat, lon) {
-forecastHeader.innerHTML = `<h5>5-Day Forecast:</h5>`
+forecastHeader.innerHTML = `<h5 class="forecastHeader">5-Day Forecast:</h5>`
 var units = 'imperial';
 var lang = 'en'; 
 var queryUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=${units}&lang=${lang}`;
@@ -43,8 +43,8 @@ function showForecast(resp) {
                 <h5 class="card-title">${convertDate(day.dt)} </h5>
                 <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}.png"/>
                 <p class="card-text">Temp: ${day.main.temp}&deg;F</p>
-                <p class="card-text">Wind: ${day.wind.speed} MPH</p>
-                <p class="card-text">Humidity: ${day.main.humidity} %</p>
+                <p class="card-text">Wind: ${Math.floor(day.wind.speed)} MPH</p>
+                <p class="card-text">Humidity: ${day.main.humidity}%</p>
               </div>
             </div>
           </div>`
@@ -63,11 +63,11 @@ function showWeather(resp) {
     var lat = resp.coord.lat;
     var lon = resp.coord.lon;
     getForecast(lat, lon); 
-    var weatherHtml = `<h3>${city} (${today}) <img src="http://openweathermap.org/img/wn/${icon}.png"/></h3>
+    var weatherHtml = `<h3 class="bord">${city} (${today}) <img src="http://openweathermap.org/img/wn/${icon}.png"/></h3>
   
     <p>Temp: ${temp}&deg;F</p>
     <p>Wind: ${wind} MPH</p>
-    <p>Humidity: ${humidity} %</p>`;
+    <p>Humidity: ${humidity}%</p>`;
     dailyWeather.innerHTML = weatherHtml; 
 }
 
@@ -96,7 +96,7 @@ function showCities() {
         var city = cities[i];
         var btn = document.createElement('button'); 
         btn.textContent= city; 
-        searchHistory.innerHTML = this.btn; 
+      
          
     }
     
