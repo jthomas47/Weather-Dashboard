@@ -97,6 +97,10 @@ function showCities() {
     for (var i = 0; i < cities.length; i += 1) {
         var city = cities[i];
         var btn = document.createElement('button'); 
+        btn.addEventListener('click', function () {
+            console.log(this.innerHTML); 
+            getWeather(this.innerHTML);
+        });
         btn.textContent= city; 
         searchHistory.appendChild(btn); 
          
@@ -108,9 +112,8 @@ function showCities() {
 
 
 
-function getWeather(event) {
-    event.preventDefault(); 
-    var city = inputCity.value; 
+function getWeather(city) {
+   
     var cities = readCity(); 
     cities.push(city);
     saveCity(cities); 
@@ -133,4 +136,8 @@ function getWeather(event) {
 }
 
 
-searchBtn.addEventListener('click', getWeather); 
+searchBtn.addEventListener('click', function (event) {
+    event.preventDefault(); 
+    var city = inputCity.value; 
+    getWeather(city); 
+}); 
