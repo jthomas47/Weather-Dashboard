@@ -3,7 +3,7 @@ var dailyWeather = document.querySelector('#dailyWeather');
 var forecast = document.querySelector('#forecast');
 var forecastHeader = document.querySelector('#forecastHeader');
 var inputCity = document.querySelector('#city'); 
-var searchHistory = document.getElementById('#history'); 
+var searchHistory = document.querySelector('#history'); 
  
 
 
@@ -92,11 +92,13 @@ function saveCity(cities) {
 
 function showCities() {
     var cities = readCity();
+    inputCity.value = ''; 
+    searchHistory.innerHTML = ``; 
     for (var i = 0; i < cities.length; i += 1) {
         var city = cities[i];
         var btn = document.createElement('button'); 
         btn.textContent= city; 
-      
+        searchHistory.appendChild(btn); 
          
     }
     
