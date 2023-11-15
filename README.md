@@ -6,8 +6,9 @@ The goal for this challenge was to build a weather dashboard that will run in th
 ## Usage
 
 link
+https://jthomas47.github.io/Weather-Dashboard/
 
 
 screenshot 
 
-![Screenshot](./assets/images/PNG)
+![Screenshot](./assets/images/weather.PNG)
